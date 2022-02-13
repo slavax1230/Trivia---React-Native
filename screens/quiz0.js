@@ -1,8 +1,8 @@
 import { StyleSheet, Text, View,Image,ImageBackground,Button,TouchableOpacity} from 'react-native';
 import React, {useState,useEffect} from 'react';
 import Quiz1 from '../screens/quiz1';
-import End from '../screens/end';
 
+let c=0;
 const Quiz0 = (props) => {
 
 
@@ -61,20 +61,36 @@ const Quiz0 = (props) => {
   
   
     const onNextQuestion = () => {
+
       let number = currentQuestion;
+      if (number < 20){
       number++;
       setCurrentQuestion(number);
       let nextQuest = questions[currentQuestion].id;
       setNextQuestion(nextQuest);
+    
+      }
+      else {
+        { props.navigation.navigate('EndGood') }
+      }
     }
 
     const onAnswer = (answer) => {
+      if (c!=5){
+      if (answer.isCorrect != true)
+        {
+        c++;
+        }
+      }
+      else {
+        c=0
+         { props.navigation.navigate('End') } }
       console.log(JSON.stringify(answer));
     }
 
 
     const questionsUI = questions.map((question,index) => {
-      if (nextQuestion == question.id)
+      if (nextQuestion == question.id )
       {
         return <Quiz1 
         key={index} 

@@ -1,10 +1,10 @@
 import { StyleSheet, Text, View,Image,ImageBackground,Button,TouchableOpacity} from 'react-native';
 import React from 'react';
-const image1 = require('../images/failed_character.png');
+const image1 = require('../images/success_character.png');
 
 
 
-const End = (props) => {
+const EndGood = (props) => {
 
 
   
@@ -17,7 +17,7 @@ const End = (props) => {
       </ImageBackground>
 
       </View>
-
+        <Text style={{fontWeight:'bold' , fontSize:'50px' , color:'#00FF00'}}>Victory!!</Text>
        <View style={{flex: 1,width:'100%',height:'10%',alignItems:'center',justifyContent:'center'}}>
          <TouchableOpacity onPress={() => { props.navigation.navigate('Home') }}
          style={{backgroundColor:'white',alignItems:'center',borderRadius: 13,height:50,width:200,justifyContent: 'center',}}>
@@ -45,4 +45,4 @@ const styles = StyleSheet.create({
     },
   });
 
-export default End
+export default EndGood
