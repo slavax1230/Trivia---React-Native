@@ -1,6 +1,7 @@
 import { StyleSheet, Text, View,Image,ImageBackground,Button,TouchableOpacity} from 'react-native';
 import React, {useState,useEffect} from 'react';
 import Quiz1 from '../screens/quiz1';
+import End from '../screens/end';
 
 const Quiz0 = (props) => {
 

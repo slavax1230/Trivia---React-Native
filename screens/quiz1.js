@@ -1,20 +1,29 @@
 import React,{useState} from 'react';
 import {Text,StyleSheet,View,TouchableOpacity,Image} from 'react-native';
+import End from '../screens/end';
+
 
 let varnotcorrect = -1;
+let flag = true
 
-
+function handleClick() {
+    navigate('screens\\end.js')
+  }
 
 const Quiz1 = props => {
     return (
         <View style={style.container}>
-            <Text>{props.Quiz1.id} / {props.lastQueston}</Text> 
+            {
+                flag ? 
+                (
+                    <View><Text>{props.Quiz1.id} / {props.lastQueston}</Text> 
                 {
                     props.Quiz1.difficulty == 'easy' ?
                     (<Text style={{color:'#00FF00',fontWeight:'bold'}}> Level: Easy </Text>) 
                     :
                     (<Text style={{color:'#FFA500',fontWeight:'bold'}}> Level: Medium </Text>) 
-                }       
+                } 
+                      
             <Text style={style.title}> {props.Quiz1.title} </Text>
             {
                 
@@ -32,22 +41,28 @@ const Quiz1 = props => {
                                    
                 ))
             }
-            {
-                            varnotcorrect == 5 ? (
-                                <View>
-                                    <Text>YOU HAVE BEEN LOSE 5/5 Attempts.</Text>
-                                    <Image
-                                style={{height:250,width:250}}
-                                source={require('../images/failed_character.png')}
-                              />                        
-                                </View>
-                            ) : (<Text>not correct: {varnotcorrect} / 5</Text>)
-                        }  
+            
                          
-            {
-                
-                
+           </View>
+                ) : 
+                (
+                   <View>
+                        <Image
+                                style={{height:300,width:300,alignItems:'center'}}
+                                source={require('../images/failed_character.png')}
+                                />
+                        
+                   </View>
+                               
+                )
             }
+            
+            <View> {
+                            varnotcorrect == 5 ? (                         
+                                flag = false
+                            ) : (<Text>not correct: {varnotcorrect} / 5</Text>)
+                    }  
+            </View>
         </View>
     )
 }
